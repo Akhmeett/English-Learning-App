@@ -26,6 +26,6 @@ Terminal
 - ng serve
 ### Backend
 Terminal
--cd backend
--pip install -r requirements.txt
--python manage.py runserver
+- cd backend
+- pip install -r requirements.txt
+- python manage.py runserver
