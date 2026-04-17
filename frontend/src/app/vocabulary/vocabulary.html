@@ -1,63 +1,55 @@
-<div class="vocabulary-container">
-    <div class="header-container">
-        <h2 class="header-topic">Vocabulary</h2>
-        <input class="header-input" type="text" placeholder="Сөзді теріңіз...">
-        <button class="header-button">+ Add Word</button>
+<div class="main-div">
+    <div class="vocab-header">
+        <h1>Vocabulary</h1>
+        <input type="text" placeholder="Сөзді іздеу..." class="search-input">
+        <button class="add-word-btn">+ Сөз қосу</button>
     </div>
-    <div class="second-container">
-        <button class="button-filter">All Words</button>
-        <button class="button-filter">New</button>
-        <button class="button-filter">Reviewing</button>
-        <button class="button-filter">Learned</button>
+
+    <div class="filter-div">
+        <button class="filter-btn active">All words</button>
+        <button class="filter-btn">New</button>
+        <button class="filter-btn">Reviewing</button>
+        <button class="filter-btn">Learned</button>
+        <button class="filter-btn">A1</button>
+        <button class="filter-btn">A2</button>
+        <button class="filter-btn">B1</button>
     </div>
-    <div class="third-last-container">
-        <div class="third-container">
-            <h2 class="stat-title">Statistics</h2>
-            <div class="stat-cards">
 
-                <div class="stat-card">
-                    <p class="stat-label">TOTAL WORDS</p>
-                    <h4 class="stat-number total-number">246</h4>
-                </div>
+    <div class="statistics-div">
+        <div>
+            <p class="first-value">248</p>
+            <p class="text">Барлық сөз</p>
+        </div>
+        <div>
+            <p class="second-Value">182</p>
+            <p class="text">Үйренілген</p>
+        </div>
+        <div>
+            <p class="third-value">34</p>
+            <p class="text">Қайталайтын</p>
+        </div>
+    </div>
 
-                <div class="stat-card">
-                    <p class="stat-label">LEARNED</p>
-                    <h4 class="stat-number learned-number">34</h4>
-                </div>
-
-                <div class="stat-card">
-                    <p class="stat-label">NOT LEARNED</p>
-                    <h4 class="stat-number not-learned-number">333</h4>
-                </div>
-            </div>
-        </div >
-        <div class="last-container">
-            <h3>Your Progress</h3>
-            <div>
-                <div class="progress-row">
-                    <span class="progress-label">A1 Beginner</span>
-                    <span class="progress-number">100%</span>
-                </div>
-            <div class="progress-bar-outer">
-                <div class="progress-bar-inner" style="width: 100%"></div>
-            </div>
-
-            <div class="progress-row">
-                <span class="progress-label">A2 Elementary</span>
-                <span class="progress-number">70%</span>
-            </div>
-            <div class="progress-bar-outer">
-                <div class="progress-bar-inner" style="width: 70%"></div>
-            </div>
-
-            <div class="progress-row">
-                <span class="progress-label">B1 Intermediate</span>
-                <span class="progress-number">20%</span>
-            </div>
-            <div class="progress-bar-outer">
-                <div class="progress-bar-inner" style="width: 20%"></div>
-            </div>
-            </div>
+    <div class="words-div">
+        <div class="word-card">
+            <p class="word-title">Perseverance</p>
+            <p class="word-translation">Табандылық</p>
+            <p class="word-example">"Her perseverance paid off."</p>
+        </div>
+        <div class="word-card">
+            <p class="word-title">Achievement</p>
+            <p class="word-translation">Жетістік</p>
+            <p class="word-example">"A great achievement."</p>
+        </div>
+        <div class="word-card">
+            <p class="word-title">Eloquent</p>
+            <p class="word-translation">Шешен</p>
+            <p class="word-example">"An eloquent speaker."</p>
+        </div>
+        <div class="word-card">
+            <p class="word-title">Ambiguous</p>
+            <p class="word-translation">Екіұшты</p>
+            <p class="word-example">"The instructions were ambiguous."</p>
         </div>
     </div>
 </div>
