@@ -1,0 +1,79 @@
+.level-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #1a3a5c;
+    gap: 32px;
+    padding: 40px;
+}
+
+.level-header {
+    text-align: center;
+}
+
+.level-title {
+    color: white;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 8px;
+}
+
+.level-subtitle {
+    color: rgba(255,255,255,0.5);
+    font-size: 1rem;
+    margin: 0;
+}
+
+.level-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 380px;
+}
+
+.level-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    background: #1e4470;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.level-btn:hover {
+    background: #245080;
+    border-color: #00c8ff;
+}
+
+.level-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.level-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #00c8ff;
+}
+
+.level-desc {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+}
+
+.level-arrow {
+    color: rgba(255,255,255,0.3);
+    font-size: 1.2rem;
+}
+
+.level-btn:hover .level-arrow {
+    color: #00c8ff;
+}

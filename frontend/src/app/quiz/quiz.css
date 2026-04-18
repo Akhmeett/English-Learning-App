@@ -1,0 +1,142 @@
+.main-div {
+    padding: 32px 40px;
+    background: #1a3a5c;
+    min-height: 100vh;
+}
+
+.quiz-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.quiz-header h1 {
+    font-size: 26px;
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 8px;
+    background: #245080;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 40%;
+    height: 100%;
+    background: #00c8ff;
+    border-radius: 10px;
+}
+
+.progress-text {
+    color: rgba(255,255,255,0.5);
+    font-size: 14px;
+}
+
+.quiz-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.quiz-stats > div {
+    background: #1e4470;
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+}
+
+.quiz-stats p { margin: 0; }
+
+.text {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 6px !important;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.correct-value { font-size: 28px; font-weight: 600; color: #22c55e; }
+.wrong-value   { font-size: 28px; font-weight: 600; color: #ff5f5f; }
+.left-value    { font-size: 28px; font-weight: 600; color: #f5a623; }
+
+.question-div {
+    background: #1e4470;
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.question-label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    margin: 0 0 10px 0;
+}
+
+.question-text {
+    font-size: 15px;
+    color: rgba(255,255,255,0.7);
+    margin: 0 0 12px 0;
+}
+
+.question-word {
+    font-size: 28px;
+    font-weight: 700;
+    color: #00c8ff;
+    margin: 0;
+}
+
+.answers-div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.answer-btn {
+    padding: 16px;
+    background: #1e4470;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.answer-btn:hover {
+    background: #245080;
+    border-color: #00c8ff;
+}
+
+.quiz-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.skip-btn {
+    padding: 10px 24px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    color: rgba(255,255,255,0.6);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.next-btn {
+    padding: 10px 28px;
+    background: #00c8ff;
+    border: none;
+    border-radius: 10px;
+    color: #000;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
