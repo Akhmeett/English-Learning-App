@@ -1,79 +1,175 @@
+:host {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+}
+
 .level-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background: #1a3a5c;
-    gap: 32px;
-    padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  overflow: hidden;
+  padding: 36px 32px;
+  background: #1a3a5c;
+  box-sizing: border-box;
 }
 
 .level-header {
-    text-align: center;
+  text-align: center;
+  margin-bottom: 36px;
 }
 
 .level-title {
-    color: white;
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 0 0 8px;
+  font-size: 36px;
+  font-weight: 900;
+  color: #e2eaff;
+  margin: 0 0 10px;
+  letter-spacing: -0.5px;
 }
 
 .level-subtitle {
-    color: rgba(255,255,255,0.5);
-    font-size: 1rem;
-    margin: 0;
+  font-size: 15px;
+  color: rgba(255,255,255,0.35);
+  margin: 0;
 }
 
-.level-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 380px;
+.level-cards {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  width: 100%;
+  max-width: 1000px;
+  flex: 1;
+  overflow: hidden;
 }
 
-.level-btn {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 24px;
-    background: #1e4470;
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 14px;
-    color: white;
-    cursor: pointer;
-    transition: 0.2s;
+.card {
+  flex: 1;
+  position: relative;
+  background: #245080;
+  border: 1px solid #1e3356;
+  border-radius: 20px;
+  padding: 50px 30px 30px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.level-btn:hover {
-    background: #245080;
-    border-color: #00c8ff;
+.card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255,255,255,0.35);
+  box-shadow: 0 16px 40px rgba(255,255,255,0.35);
 }
 
-.level-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
+.recommended {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: rgba(45, 106, 255, 0.12);
+  color: #5b8fff;
+  border: 1px solid rgba(45, 106, 255, 0.3);
 }
 
-.level-name {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #00c8ff;
+.level-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: #e2eaff;
 }
 
-.level-desc {
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.5);
+.level-badge.a1 { background: rgba(56, 139, 253, 0.15); border: 1px solid rgba(56, 139, 253, 0.3); }
+.level-badge.a2 { background: rgba(45, 106, 255, 0.15); border: 1px solid rgba(45, 106, 255, 0.3); }
+.level-badge.b1 { background: rgba(99, 160, 255, 0.15); border: 1px solid rgba(99, 160, 255, 0.3); }
+
+.card-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #e2eaff;
+  margin-bottom: 15px;
 }
 
-.level-arrow {
-    color: rgba(255,255,255,0.3);
-    font-size: 1.2rem;
+.card-desc {
+  font-size: 13px;
+  color: rgba(255,255,255,0.35);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  flex-shrink: 0;
 }
 
-.level-btn:hover .level-arrow {
-    color: #00c8ff;
+.stats {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 18px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #1e3356;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.stat-val {
+  font-size: 16px;
+  font-weight: 600;
+  color: #5b8fff;
+}
+
+.stat-key {
+  font-size: 10px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 1px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.tag {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: rgba(45, 106, 255, 0.08);
+  color: #5b8fff;
+  border: 1px solid rgba(45, 106, 255, 0.2);
+}
+
+.card-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 13px 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.35);
+  background: rgba(45, 106, 255, 0.08);
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  margin-top: auto;
+}
+
+.card-btn:hover {
+  background: rgba(45, 106, 255, 0.18);
+  transform: scale(0.98);
 }
