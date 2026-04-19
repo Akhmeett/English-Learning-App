@@ -6,6 +6,8 @@ import { Profile } from './profile/profile';
 import { Quiz } from './quiz/quiz';
 import { Vocabulary } from './vocabulary/vocabulary';
 import { Layout } from './layout/layout';
+import { QuizLevel } from './quiz-level/quiz-level';
+import { QuizResult } from './quiz-result/quiz-result';
 export const routes: Routes = [
     {path: '', component: Login},
 
@@ -14,7 +16,9 @@ export const routes: Routes = [
             {path:'home', component: Home},
             {path:'profile', component:Profile},
             {path:'quiz', component: Quiz},
-            {path:'vocabulary',component:Vocabulary}
+            {path:'vocabulary',component:Vocabulary},
+            {path:'quiz-level',component:QuizLevel},
+            {path:'quiz-result',component:QuizResult}
         ]
     }
 ];
