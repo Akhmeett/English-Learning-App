@@ -2,7 +2,7 @@
     <div class="vocab-header">
         <h1>Vocabulary</h1>
         <input type="text" placeholder="Сөзді іздеу..." class="search-input">
-        <button class="add-word-btn">+ Сөз қосу</button>
+        <button class="add-word-btn" (click)="openModal()">+ Сөз қосу</button>
     </div>
 
     <div class="filter-div">
@@ -51,5 +51,44 @@
             <p class="word-translation">Екіұшты</p>
             <p class="word-example">"The instructions were ambiguous."</p>
         </div>
+    </div>
+</div>
+
+<div class="modal-overlay" *ngIf="isModalOpen" (click)="closeModal()">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+
+        <div class="modal-header">
+            <h2>Сөз қосу</h2>
+            <button class="modal-close" (click)="closeModal()">✕</button>
+        </div>
+
+        <div class="modal-body">
+            <div class="input-group">
+                <label>Ағылшын сөзі</label>
+                <input type="text" placeholder="Perseverance" [(ngModel)]="newWord.english">
+            </div>
+            <div class="input-group">
+                <label>Қазақша аудармасы</label>
+                <input type="text" placeholder="Табандылық" [(ngModel)]="newWord.kazakh">
+            </div>
+            <div class="input-group">
+                <label>Мысал сөйлем</label>
+                <textarea placeholder="Her perseverance paid off." [(ngModel)]="newWord.example"></textarea>
+            </div>
+            <div class="input-group">
+                <label>Деңгей</label>
+                <div class="level-select">
+                    <button class="level-btn" [class.active]="selectedLevel === 'A1'" (click)="selectLevel('A1')">A1</button>
+                    <button class="level-btn" [class.active]="selectedLevel === 'A2'" (click)="selectLevel('A2')">A2</button>
+                    <button class="level-btn" [class.active]="selectedLevel === 'B1'" (click)="selectLevel('B1')">B1</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="cancel-btn" (click)="closeModal()">Болдырмау</button>
+            <button class="submit-btn" (click)="addWord()">Қосу</button>
+        </div>
+
     </div>
 </div>

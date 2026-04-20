@@ -131,3 +131,144 @@
     color: rgba(255,255,255,0.4);
     margin: 0;
 }
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-card {
+    background: #1a2a3a;
+    border-radius: 16px;
+    padding: 32px;
+    width: 480px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    color: white;
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.modal-close {
+    background: transparent;
+    border: none;
+    color: rgba(255,255,255,0.5);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.modal-close:hover {
+    color: white;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.input-group label {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.85rem;
+}
+
+.input-group input,
+.input-group textarea {
+    background: #0d1b2a;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 10px 14px;
+    color: white;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    border-color: #00c8ff;
+}
+
+.input-group textarea {
+    resize: none;
+    height: 80px;
+}
+
+.level-select {
+    display: flex;
+    gap: 10px;
+}
+
+.level-btn {
+    flex: 1;
+    padding: 10px;
+    background: #0d1b2a;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.level-btn.active {
+    background: #00c8ff;
+    color: #0d1b2a;
+    font-weight: 600;
+    border-color: #00c8ff;
+}
+
+.modal-footer {
+    display: flex;
+    gap: 12px;
+}
+
+.cancel-btn {
+    flex: 1;
+    padding: 12px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.cancel-btn:hover {
+    background: #1a2f4a;
+}
+
+.submit-btn {
+    flex: 1;
+    padding: 12px;
+    background: #00c8ff;
+    border: none;
+    border-radius: 10px;
+    color: #0d1b2a;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background: #009fc2;
+}
