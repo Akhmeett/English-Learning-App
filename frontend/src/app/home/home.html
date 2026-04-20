@@ -1,1 +1,46 @@
-<p>Welcome to English word learning cite!</p>
+<div class="home-container">
+
+  <div class="welcome-banner">
+    <h1 class="welcome-title">Қош келдіңіз, {{ userName }}!</h1>
+    <p class="welcome-subtitle">Бүгін де үйренуді жалғастырыңыз</p>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card" *ngFor="let stat of stats">
+      <span class="stat-value" [ngClass]="stat.colorClass">{{ stat.value }}</span>
+      <span class="stat-label">{{ stat.label }}</span>
+    </div>
+  </div>
+
+  <div class="bottom-grid">
+
+    <div class="section-card">
+      <h2 class="section-title">Бүгін үйренетін сөздер</h2>
+      <div class="word-list">
+        <div class="word-item" *ngFor="let word of todayWords">
+          <div class="word-info">
+            <span class="word-english">{{ word.english }}</span>
+            <span class="word-kazakh">{{ word.kazakh }}</span>
+          </div>
+          <span class="word-level">{{ word.level }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">Соңғы quiz нәтижелері</h2>
+      <div class="quiz-list">
+        <div class="quiz-item" *ngFor="let quiz of quizResults">
+          <div class="quiz-info">
+            <span class="quiz-title">{{ quiz.title }}</span>
+            <span class="quiz-date">{{ quiz.date }}</span>
+          </div>
+          <span class="quiz-score" [ngClass]="getScoreClass(quiz.score, quiz.total)">
+            {{ quiz.score }}/{{ quiz.total }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
