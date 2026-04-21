@@ -32,14 +32,14 @@ export class QuizResult implements OnInit {
 
   get emoji(): string {
     if (this.percent >= 80) return '🏆';
-    if (this.percent >= 50) return '🎉';
-    return '💪';
+    if (this.percent >= 50) return '';
+    return '';
   }
 
   get message(): string {
-    if (this.percent >= 80) return 'Керемет нәтиже!';
-    if (this.percent >= 50) return 'Жақсы нәтиже!';
-    return 'Жалғастыра беріңіз!';
+    if (this.percent >= 80) return 'Nice!';
+    if (this.percent >= 50) return 'Not bad!';
+    return 'Badly!';
   }
 
   retry() {

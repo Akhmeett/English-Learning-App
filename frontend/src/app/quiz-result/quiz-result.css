@@ -174,11 +174,11 @@
 .btn-secondary {
   flex: 1;
   padding: 15px 20px;
-  background: rgba(20,40,80,0.5);
+  background: #1a3a5c;
   border: 1px solid #1c3057;
   border-radius: 14px;
-  color: #c8daff;
-  font-size: 14px;
+  color: white;
+  font-size: 18px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.25s ease;
@@ -194,15 +194,17 @@
 .btn-primary {
   flex: 1;
   padding: 15px 20px;
-  background: rgba(20,40,80,0.5);
+  background: #1a3a5c;
   border: 1px solid #1c3057;
   border-radius: 14px;
-  color: #7aaaff;
-  font-size: 14px;
+  color: white;
+  font-size: 18px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.25s ease;
   letter-spacing: 0.2px;
+  
+  
 }
 
 .btn-primary:hover {

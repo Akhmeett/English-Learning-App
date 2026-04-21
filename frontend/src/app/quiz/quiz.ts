@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 interface Question {
   word: string;
@@ -10,42 +11,69 @@ interface Question {
 
 @Component({
   selector: 'app-quiz',
+  standalone: true,
   imports: [CommonModule],
   templateUrl: './quiz.html',
   styleUrl: './quiz.css',
 })
 export class Quiz implements OnInit {
-
   level = 'A1';
-  questions: Question[] = [
-    { word: 'Eloquent',   options: ['Шешен', 'Батыл', 'Зерек', 'Мейірімді'], correct: 'Шешен' },
-    { word: 'Brave',      options: ['Батыл', 'Шешен', 'Жылы', 'Зерек'],      correct: 'Батыл' },
-    { word: 'Smart',      options: ['Зерек', 'Батыл', 'Шешен', 'Жақсы'],     correct: 'Зерек' },
-    { word: 'Kind',       options: ['Мейірімді', 'Зерек', 'Батыл', 'Жылы'],  correct: 'Мейірімді' },
-    { word: 'Happy',      options: ['Бақытты', 'Зерек', 'Шешен', 'Батыл'],   correct: 'Бақытты' },
-    { word: 'Strong',     options: ['Күшті', 'Жылы', 'Зерек', 'Шешен'],      correct: 'Күшті' },
-    { word: 'Warm',       options: ['Жылы', 'Күшті', 'Батыл', 'Зерек'],      correct: 'Жылы' },
-    { word: 'Fast',       options: ['Жылдам', 'Жылы', 'Күшті', 'Шешен'],     correct: 'Жылдам' },
-    { word: 'Calm',       options: ['Тыныш', 'Жылдам', 'Батыл', 'Зерек'],    correct: 'Тыныш' },
-    { word: 'Wise',       options: ['Дана', 'Тыныш', 'Жылы', 'Күшті'],       correct: 'Дана' },
-  ];
-
+  questions: Question[] = [];
   currentIndex = 0;
   correct = 0;
   wrong = 0;
   selected: string | null = null;
   answered = false;
+  loading = true;
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private route: ActivatedRoute, 
+    private router: Router,
+    private http: HttpClient,
+    private cdr: ChangeDetectorRef  // ← добавили
+  ) {}
 
   ngOnInit() {
     this.route.queryParams.subscribe(p => {
       if (p['level']) this.level = p['level'];
+      this.loadWords();
     });
   }
 
+  loadWords() {
+    this.loading = true;
+    const apiUrl = `http://127.0.0.1:8000/api/vocabulary/words/?level=${this.level}`;
+
+    this.http.get<any[]>(apiUrl).subscribe({
+      next: (data) => {
+        this.questions = data.map(item => ({
+          word: item.english,
+          correct: item.kazakh,
+          options: this.generateOptions(item.kazakh, data)
+        }));
+        this.loading = false;
+        this.cdr.detectChanges();  
+      },
+      error: (err) => {
+        console.error('Ошибка:', err);
+        this.loading = false;
+        this.cdr.detectChanges();  
+      }
+    });
+  }
+
+  generateOptions(correct: string, allData: any[]): string[] {
+    let options = [correct];
+    let otherWords = allData
+      .filter(item => item.kazakh !== correct)
+      .map(item => item.kazakh);
+    otherWords.sort(() => Math.random() - 0.5);
+    options.push(...otherWords.slice(0, 3));
+    return options.sort(() => Math.random() - 0.5);
+  }
+
   get current(): Question {
-    return this.questions[this.currentIndex];
+    return this.questions[this.currentIndex] ?? { word: '', options: [], correct: '' };
   }
 
   get left(): number {
@@ -53,11 +81,12 @@ export class Quiz implements OnInit {
   }
 
   get progress(): number {
+    if (this.questions.length === 0) return 0;
     return ((this.currentIndex + 1) / this.questions.length) * 100;
   }
 
   selectAnswer(option: string) {
-    if (this.answered) return;
+    if (this.answered || !this.current) return;
     this.selected = option;
     this.answered = true;
     if (option === this.current.correct) {

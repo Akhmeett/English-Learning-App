@@ -57,7 +57,7 @@
 }
 
 .quiz-stats > div {
-  background: #111f38;
+  background: #245080;
   border: 1px solid #1e3356;
   border-radius: 14px;
   padding: 16px;
@@ -67,10 +67,10 @@
 .correct-value { font-size: 32px; font-weight: 700; color: #22c55e; margin: 0 0 4px; }
 .wrong-value   { font-size: 32px; font-weight: 700; color: #ef4444; margin: 0 0 4px; }
 .left-value    { font-size: 32px; font-weight: 700; color: #f59e0b; margin: 0 0 4px; }
-.text          { font-size: 11px; color: #4a6fa5; letter-spacing: 1px; text-transform: uppercase; margin: 0; }
+.text          { font-size: 11px; color: white; letter-spacing: 1px; text-transform: uppercase; margin: 0; }
 
 .question-div {
-  background: #111f38;
+  background: #245080;
   border: 1px solid #1e3356;
   border-radius: 16px;
   padding: 24px;
@@ -105,8 +105,8 @@
 
 .answer-btn {
   padding: 18px;
-  background: #111f38;
-  border: 1px solid #1e3356;
+  background: #255274;
+  border: 1px solid white;
   border-radius: 14px;
   color: #e2eaff;
   font-size: 15px;
@@ -143,9 +143,9 @@
 .skip-btn {
   padding: 10px 20px;
   background: transparent;
-  border: 1px solid #1e3356;
+  border: 1px solid #ffffff;
   border-radius: 10px;
-  color: #4a6fa5;
+  color: white;
   font-size: 14px;
   cursor: pointer;
   transition: border-color 0.2s, color 0.2s;
@@ -161,7 +161,7 @@
   background: #00c8ff;
   border: none;
   border-radius: 10px;
-  color: #0b1629;
+  color: white;
   font-size: 15px;
   font-weight: 700;
   cursor: pointer;
