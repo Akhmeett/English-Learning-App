@@ -1,5 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings 
+
 # Create your models here.
 
 class Category(models.Model):
@@ -21,7 +22,7 @@ class Word(models.Model):
     level = models.CharField(max_length=10, choices=LEVEL_CHOICES, default='A1')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
+        
     def __str__(self):
         return self.english

@@ -122,6 +122,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+AUTH_USER_MODEL = 'users.CustomUser'
+
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:4200',
 ]
@@ -130,3 +132,10 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'ahmet2007mustapa@gmail.com'
+EMAIL_HOST_PASSWORD = 'irav xego npca btru' 
