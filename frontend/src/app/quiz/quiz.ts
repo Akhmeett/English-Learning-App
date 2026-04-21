@@ -26,11 +26,14 @@ export class Quiz implements OnInit {
   answered = false;
   loading = true;
 
+  // URL для сохранения результатов
+  private saveResultUrl = 'http://127.0.0.1:8000/api/quiz/save-result/';
+
   constructor(
     private route: ActivatedRoute, 
     private router: Router,
     private http: HttpClient,
-    private cdr: ChangeDetectorRef  // ← добавили
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
@@ -42,7 +45,7 @@ export class Quiz implements OnInit {
 
   loadWords() {
     this.loading = true;
-    const apiUrl = `http://127.0.0.1:8000/api/vocabulary/words/?level=${this.level}`;
+    const apiUrl = `http://127.0.0.1:8000/api/quiz/words/?level=${this.level}`;
 
     this.http.get<any[]>(apiUrl).subscribe({
       next: (data) => {
@@ -55,7 +58,7 @@ export class Quiz implements OnInit {
         this.cdr.detectChanges();  
       },
       error: (err) => {
-        console.error('Ошибка:', err);
+        console.error('Ошибка загрузки слов:', err);
         this.loading = false;
         this.cdr.detectChanges();  
       }
@@ -102,10 +105,31 @@ export class Quiz implements OnInit {
       this.selected = null;
       this.answered = false;
     } else {
+      // Сохраняем результаты в БД перед переходом
+      this.saveResultsToBackend();
+      
       this.router.navigate(['/app/quiz-result'], {
         queryParams: { correct: this.correct, wrong: this.wrong, total: this.questions.length }
       });
     }
+  }
+
+  // Метод для отправки данных в Django
+  private saveResultsToBackend() {
+    const total = this.questions.length;
+    const score = this.correct;
+    const percentage = total > 0 ? (score / total) * 100 : 0;
+
+    const payload = {
+      score: score,
+      total_questions: total,
+      percentage: Math.round(percentage * 100) / 100 // Округляем до 2 знаков
+    };
+
+    this.http.post(this.saveResultUrl, payload).subscribe({
+      next: (res) => console.log('Результат успешно сохранен в Django:', res),
+      error: (err) => console.error('Ошибка сохранения в Django:', err)
+    });
   }
 
   skip() {
