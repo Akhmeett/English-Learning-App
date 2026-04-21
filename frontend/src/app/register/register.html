@@ -5,10 +5,17 @@
     <div class="card-header">
       <div class="logo-icon">📖</div>
       <span class="app-label">WordLearn</span>
-      <h1>Welcome back</h1>
+      <h1>Create account</h1>
     </div>
 
-    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+    <form (ngSubmit)="onSubmit()" #regForm="ngForm">
+
+      <div class="input-box">
+        <input type="text" placeholder="Username" required
+               [(ngModel)]="username" name="username">
+        <i class="fa-solid fa-user"></i>
+      </div>
+
       <div class="input-box">
         <input type="email" placeholder="Email" required
                [(ngModel)]="email" name="email">
@@ -21,25 +28,21 @@
         <i class="fa-solid fa-lock"></i>
       </div>
 
-      <!-- ← Қате хабарлама — жаңа -->
-      <div class="error-message" *ngIf="errorMessage">
-        ⚠️ {{ errorMessage }}
+      <div class="input-box">
+        <input type="password" placeholder="Confirm Password" required
+               [(ngModel)]="confirmPassword" name="confirmPassword">
+        <i class="fa-solid fa-lock"></i>
       </div>
 
-      <div class="remember">
-        <label>
-          <input type="checkbox" [(ngModel)]="rememberMe" name="rememberMe"> Remember me
-        </label>
-        <a routerLink="/forgot-password">Forgot password?</a>
-      </div>
+      <div class="error-message" *ngIf="errorMessage">⚠️ {{ errorMessage }}</div>
+      <div class="success-message" *ngIf="successMessage">✅ {{ successMessage }}</div>
 
-      <!-- ← isLoading қосылды -->
       <button type="submit" class="button" [disabled]="isLoading">
-        {{ isLoading ? 'Кіруде...' : 'Login' }}
+        {{ isLoading ? 'Тіркелуде...' : 'Register' }}
       </button>
 
       <div class="register-link">
-        <p>Don't have an account? <a routerLink="/register">Register</a></p>
+        <p>Already have an account? <a routerLink="/">Login</a></p>
       </div>
     </form>
   </div>

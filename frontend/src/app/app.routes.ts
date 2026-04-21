@@ -8,8 +8,12 @@ import { Vocabulary } from './vocabulary/vocabulary';
 import { Layout } from './layout/layout';
 import { QuizLevel } from './quiz-level/quiz-level';
 import { QuizResult } from './quiz-result/quiz-result';
+import { Register } from './register/register';
+import { ForgotPassword } from './forgot-password/forgot-password';
 export const routes: Routes = [
     {path: '', component: Login},
+    {path: 'register', component: Register },          
+    {path: 'forgot-password', component: ForgotPassword },
 
     {path: 'app', component:Layout,
         children: [

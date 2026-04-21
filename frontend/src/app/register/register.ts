@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, OnDestroy, ViewChild, ElementRef, ChangeDetectorRef, OnInit } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -10,20 +10,22 @@ interface Word {
 }
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-register',
   standalone: true,
   imports: [FormsModule, CommonModule, HttpClientModule, RouterModule],
-  templateUrl: './login.html',
-  styleUrls: ['./login.css']
+  templateUrl: './register.html',
+  styleUrls: ['./register.css']
 })
-export class Login implements AfterViewInit, OnDestroy, OnInit {
+export class Register implements AfterViewInit, OnDestroy {
 
   @ViewChild('bgCanvas') canvasRef!: ElementRef<HTMLCanvasElement>;
 
+  username = '';
   email = '';
   password = '';
-  rememberMe = false;
+  confirmPassword = '';
   errorMessage = '';
+  successMessage = '';
   isLoading = false;
 
   constructor(
@@ -32,21 +34,15 @@ export class Login implements AfterViewInit, OnDestroy, OnInit {
     private cdr: ChangeDetectorRef
   ) {}
 
-  ngOnInit(): void {
-    const savedEmail = localStorage.getItem('remembered_email');
-    if (savedEmail) {
-      this.email = savedEmail;
-      this.rememberMe = true;
-    }
-  }
-
   private ctx!: CanvasRenderingContext2D;
   private rafId!: number;
   private words: Word[] = [];
   private wordList = [
     'apple','beautiful','curious','dream','elephant','freedom',
     'grammar','hello','idea','journey','knowledge','language',
-    'A','B','C','D','E','F','G','H','I','J','K','L','M'
+    'memory','nature','ocean','practice','quiet','rainbow',
+    'A','B','C','D','E','F','G','H','I','J','K','L','M',
+    'N','O','P','Q','R','S','T','U','V','W','X','Y','Z'
   ];
 
   ngAfterViewInit(): void {
@@ -63,7 +59,7 @@ export class Login implements AfterViewInit, OnDestroy, OnInit {
   }
 
   private resize(canvas: HTMLCanvasElement): void {
-    canvas.width  = window.innerWidth;
+    canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
   }
 
@@ -101,28 +97,31 @@ export class Login implements AfterViewInit, OnDestroy, OnInit {
   }
 
   onSubmit(): void {
-    this.isLoading = true;
     this.errorMessage = '';
+    this.successMessage = '';
+
+    if (this.password !== this.confirmPassword) {
+      this.errorMessage = 'Парольдер сәйкес емес!';
+      return;
+    }
+
+    this.isLoading = true;
     this.cdr.detectChanges();
 
-    this.http.post('http://127.0.0.1:8000/api/users/login/', {
+    this.http.post('http://127.0.0.1:8000/api/users/register/', {
+      username: this.username,
       email: this.email,
       password: this.password
     }).subscribe({
-      next: (response: any) => {
-        localStorage.setItem('access_token', response.tokens.access);
-        if (this.rememberMe) {
-          localStorage.setItem('remembered_email', this.email);
-        } else {
-          localStorage.removeItem('remembered_email');
-        }
+      next: () => {
         this.isLoading = false;
+        this.successMessage = 'Тіркелу сәтті! Кіруге өтіңіз.';
         this.cdr.detectChanges();
-        this.router.navigate(['/app/home']);
+        setTimeout(() => this.router.navigate(['/']), 2000);
       },
-      error: () => {
+      error: (err) => {
         this.isLoading = false;
-        this.errorMessage = 'Email немесе пароль қате!';
+        this.errorMessage = err.error?.email?.[0] || err.error?.username?.[0] || 'Тіркелу қатесі. Қайта көріңіз!';
         this.cdr.detectChanges();
       }
     });
