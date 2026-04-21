@@ -24,4 +24,7 @@ export class VocabularyService{
   getCategories(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/categories/`);
   }
+  updateWord(id: number, word: any) {
+    return this.http.put(`${this.apiUrl}/${id}/`, word);
+}
 }
