@@ -49,4 +49,6 @@
     min-width: 0;
     background-color: #1a3a5c;
     flex-direction: column;
+    overflow-y: auto; 
+    height: 100vh; 
 }

@@ -5,12 +5,21 @@
     <p class="welcome-subtitle">Бүгін де үйренуді жалғастырыңыз</p>
   </div>
 
-  <div class="stats-grid">
-    <div class="stat-card" *ngFor="let stat of stats">
-      <span class="stat-value" [ngClass]="stat.colorClass">{{ stat.value }}</span>
-      <span class="stat-label">{{ stat.label }}</span>
-    </div>
+  <div class="streak-banner">
+    <span class="streak-icon">🔥</span>
+    <span class="streak-text">5 күн қатарынан үйренді!</span>
   </div>
+
+  <div class="daily-goal">
+    <div class="goal-header">
+        <span class="goal-title">Бүгінгі мақсат</span>
+        <span class="goal-count">8/10 сөз</span>
+    </div>
+    <div class="goal-bar-outer">
+        <div class="goal-bar-inner" style="width: 80%"></div>
+    </div>
+</div>
+
 
   <div class="bottom-grid">
 
@@ -41,6 +50,7 @@
         </div>
       </div>
     </div>
+
 
   </div>
 </div>

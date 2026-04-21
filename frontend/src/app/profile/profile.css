@@ -1,7 +1,6 @@
 .main-div {
     padding: 32px 40px;
     background: #1a3a5c;
-    min-height: 100vh;
 }
 
 .main-div h1 {
@@ -96,31 +95,52 @@
 
 .right-description { font-size: 14px; font-weight: 500; color: #fff; }
 
-.statistics-div {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-}
 
-.statistics-div > div {
-    background: #245080;
+
+
+
+.progress-section {
+    background: #1e4470;
     border-radius: 14px;
-    padding: 20px;
-    text-align: center;
+    padding: 20px 24px;
+    margin-top: 16px;
     border: 1px solid rgba(255,255,255,0.08);
 }
 
-.statistics-div p { margin: 0; }
-
-.text {
-    font-size: 11px;
-    color: rgba(255,255,255,0.4);
-    margin-top: 6px !important;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
+.section-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    margin: 0 0 16px 0;
 }
 
-.first-value  { font-size: 28px; font-weight: 600; color: #fff; }
-.second-Value { font-size: 28px; font-weight: 600; color: #22c55e; }
-.third-value  { font-size: 28px; font-weight: 600; color: #00c8ff; }
-.fourth-value { font-size: 28px; font-weight: 600; color: #f5a623; }
+.progress-item {
+    margin-bottom: 14px;
+}
+
+.progress-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+.progress-label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+}
+
+.progress-percent {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.progress-bar-outer {
+    background: #245080;
+    border-radius: 4px;
+    height: 6px;
+}
+
+.progress-bar-inner {
+    height: 6px;
+    border-radius: 4px;
+}

@@ -1,7 +1,6 @@
 .main-div {
     padding: 32px 35px;
     background:#1a3a5c;
-    min-height: 100vh;
 }
 
 .vocab-header {
@@ -271,4 +270,18 @@
 
 .submit-btn:hover {
     background: #009fc2;
+}
+
+
+.success-toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #22c55e;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 999;
 }

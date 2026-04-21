@@ -1,4 +1,9 @@
 <div class="main-div">
+
+    <div class="success-toast" *ngIf="showSuccess">
+        ✓ Сөз сәтті қосылды!
+    </div>
+
     <div class="vocab-header">
         <h1>Vocabulary</h1>
         <input type="text" placeholder="Сөзді іздеу..." class="search-input">
@@ -16,42 +21,27 @@
     </div>
 
     <div class="statistics-div">
-        <div>
-            <p class="first-value">248</p>
-            <p class="text">Барлық сөз</p>
-        </div>
-        <div>
-            <p class="second-Value">182</p>
-            <p class="text">Үйренілген</p>
-        </div>
-        <div>
-            <p class="third-value">34</p>
-            <p class="text">Қайталайтын</p>
-        </div>
+    <div>
+        <p class="first-value">{{ words.length }}</p>
+        <p class="text">Барлық сөз</p>
     </div>
-
+    <div>
+        <p class="second-Value">0</p>
+        <p class="text">Үйренілген</p>
+    </div>
+    <div>
+        <p class="third-value">0</p>
+        <p class="text">Қайталайтын</p>
+    </div>
+</div>
     <div class="words-div">
-        <div class="word-card">
-            <p class="word-title">Perseverance</p>
-            <p class="word-translation">Табандылық</p>
-            <p class="word-example">"Her perseverance paid off."</p>
-        </div>
-        <div class="word-card">
-            <p class="word-title">Achievement</p>
-            <p class="word-translation">Жетістік</p>
-            <p class="word-example">"A great achievement."</p>
-        </div>
-        <div class="word-card">
-            <p class="word-title">Eloquent</p>
-            <p class="word-translation">Шешен</p>
-            <p class="word-example">"An eloquent speaker."</p>
-        </div>
-        <div class="word-card">
-            <p class="word-title">Ambiguous</p>
-            <p class="word-translation">Екіұшты</p>
-            <p class="word-example">"The instructions were ambiguous."</p>
-        </div>
+    <div class="word-card" *ngFor="let word of words">
+        <p class="word-title">{{ word.english }}</p>
+        <p class="word-translation">{{ word.kazakh }}</p>
+        <p class="word-example">{{ word.example }}</p>
+        <button class="delete-btn" (click)="deleteWord(word.id)">Delete</button>
     </div>
+</div>
 </div>
 
 <div class="modal-overlay" *ngIf="isModalOpen" (click)="closeModal()">
